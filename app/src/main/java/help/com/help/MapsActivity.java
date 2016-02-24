@@ -1,56 +1,56 @@
-package help.com.help;
-
-import android.annotation.TargetApi;
-import android.os.Build;
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
-
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-
-    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
-
-        MapFragment mapFragment = (MapFragment) getFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+package help.com.help;//package help.com.help;
+//
+//import android.annotation.TargetApi;
+//import android.os.Build;
+//import android.support.v4.app.FragmentActivity;
+//import android.os.Bundle;
+//
+//import com.google.android.gms.maps.CameraUpdateFactory;
+//import com.google.android.gms.maps.GoogleMap;
+//import com.google.android.gms.maps.MapFragment;
+//import com.google.android.gms.maps.OnMapReadyCallback;
+//import com.google.android.gms.maps.SupportMapFragment;
+//import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+//import com.google.android.gms.maps.model.LatLng;
+//import com.google.android.gms.maps.model.MarkerOptions;
+//
+//public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+//
+//    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+//
+//    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_maps);
+//
+//        MapFragment mapFragment = (MapFragment) getFragmentManager()
+//                .findFragmentById(R.id.map);
+//        mapFragment.getMapAsync(this);
+////        setUpMapIfNeeded();
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
 //        setUpMapIfNeeded();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-//        setUpMapIfNeeded();
-    }
-
-    /**
-     * Sets up the map if it is possible to do so (i.e., the Google Play services APK is correctly
-     * installed) and the map has not already been instantiated.. This will ensure that we only ever
-     * call {@link #setUpMap()} once when {@link #mMap} is not null.
-     * <p/>
-     * If it isn't installed {@link SupportMapFragment} (and
-     * {@link com.google.android.gms.maps.MapView MapView}) will show a prompt for the user to
-     * install/update the Google Play services APK on their device.
-     * <p/>
-     * A user can return to this FragmentActivity after following the prompt and correctly
-     * installing/updating/enabling the Google Play services. Since the FragmentActivity may not
-     * have been completely destroyed during this process (it is likely that it would only be
-     * stopped or paused), {@link #onCreate(Bundle)} may not be called again so we should call this
-     * method in {@link #onResume()} to guarantee that it will be called.
-     */
+//    }
+//
+//    /**
+//     * Sets up the map if it is possible to do so (i.e., the Google Play services APK is correctly
+//     * installed) and the map has not already been instantiated.. This will ensure that we only ever
+//     * call {@link #setUpMap()} once when {@link #mMap} is not null.
+//     * <p>
+//     * If it isn't installed {@link SupportMapFragment} (and
+//     * {@link com.google.android.gms.maps.MapView MapView}) will show a prompt for the user to
+//     * install/update the Google Play services APK on their device.
+//     * <p>
+//     * A user can return to this FragmentActivity after following the prompt and correctly
+//     * installing/updating/enabling the Google Play services. Since the FragmentActivity may not
+//     * have been completely destroyed during this process (it is likely that it would only be
+//     * stopped or paused), {@link #onCreate(Bundle)} may not be called again so we should call this
+//     * method in {@link #onResume()} to guarantee that it will be called.
+//     */
 //    private void setUpMapIfNeeded() {
 //        // Do a null check to confirm that we have not already instantiated the map.
 //        if (mMap == null) {
@@ -63,29 +63,61 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //            }
 //        }
 //    }
+//
+//    /**
+//     * This is where we can add markers or lines, add listeners or move the camera. In this case, we
+//     * just add a marker near Africa.
+//     * <p>
+//     * This should only be called once and when we are sure that {@link #mMap} is not null.
+//     */
+//    private void setUpMap() {
+//        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+//    }
+//
+//    @Override
+//    public void onMapReady(GoogleMap googleMap) {
+//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+//                new LatLng(41.889, -87.622), 16));
+//
+//        // You can customize the marker image using images bundled with
+//        // your app, or dynamically generated bitmaps.
+//        googleMap.addMarker(new MarkerOptions()
+//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.abc_btn_switch_to_on_mtrl_00012))
+//                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+//                .position(new LatLng(41.889, -87.622)));
+//
+//        googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+//    }
+//}
 
-    /**
-     * This is where we can add markers or lines, add listeners or move the camera. In this case, we
-     * just add a marker near Africa.
-     * <p/>
-     * This should only be called once and when we are sure that {@link #mMap} is not null.
-     */
-    private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+import com.google.android.gms.maps.*;
+import com.google.android.gms.maps.model.*;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class MapsActivity extends Activity implements OnMapReadyCallback {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.abc_search_view);
+
+        MapFragment mapFragment = (MapFragment) getFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                new LatLng(41.889, -87.622), 16));
+    public void onMapReady(GoogleMap map) {
+        LatLng sydney = new LatLng(-33.867, 151.206);
 
-        // You can customize the marker image using images bundled with
-        // your app, or dynamically generated bitmaps.
-        googleMap.addMarker(new MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.house_flag))
-                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
-                .position(new LatLng(41.889, -87.622)));
+        map.setMyLocationEnabled(true);
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13));
 
-        googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        map.addMarker(new MarkerOptions()
+                .title("Sydney")
+                .snippet("The most populous city in Australia.")
+                .position(sydney));
     }
 }
