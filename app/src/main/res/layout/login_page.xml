@@ -52,4 +52,16 @@
         android:textColor="#ff85d3ff"
         android:textSize="35sp"/>
 
+    <Button
+        android:id="@+id/sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up_button"
+        android:layout_below="@+id/sign_in"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/register_button_hint"
+        style="@style/Base.Widget.AppCompat.Toolbar.Button.Navigation"
+        android:textColor="#ff85d3ff"
+        android:textSize="35sp"/>
+
 </RelativeLayout>

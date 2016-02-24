@@ -14,8 +14,8 @@ import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
-import help.com.help.MapsActivity;
 import help.com.help.R;
+import help.com.help.main.MainActivity;
 
 public class LoginActivity extends Activity {
 
@@ -41,7 +41,7 @@ public class LoginActivity extends Activity {
         }
 
         protected void onPostExecute(String result) {
-            LoginActivity.this.startActivity(new Intent(LoginActivity.this, MapsActivity.class));
+            LoginActivity.this.startActivity(new Intent(LoginActivity.this, MainActivity.class));
         }
 
     }
@@ -53,15 +53,23 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.login_page);
         final EditText email = (EditText) findViewById(R.id.email);
         final EditText pass = (EditText) findViewById(R.id.pass);
-        Button signUp = (Button) findViewById(R.id.sign_in);
+        Button signIn = (Button) findViewById(R.id.sign_in);
+        Button signUp = (Button) findViewById(R.id.sign_up);
 
-        signUp.setOnClickListener(new View.OnClickListener() {
+        signIn.setOnClickListener(new View.OnClickListener() {
             @TargetApi(Build.VERSION_CODES.CUPCAKE)
             @Override
             public void onClick(View v) {
                 String[] params = new String[]{email.getText().toString(),
                         pass.getText().toString()};
                 new SendSignUpPostRequest().execute(params);
+            }
+        });
+
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginActivity.this.startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
             }
         });
 

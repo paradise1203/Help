@@ -25,17 +25,15 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".auth.RegistrationActivity">
+        <activity android:name=".auth.LoginActivity">
             <intent-filter>
                 <action android:name="ANDROID.INTENT.ACTION.MAIN"/>
                 <category android:name="ANDROID.INTENT.CATEGORY.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".auth.LoginActivity"/>
-        <activity android:name=".action.PassActivity"/>
-        <activity android:name=".MapsActivity"/>
-        <activity android:name=".location.LocationService"/>
+        <activity android:name=".auth.RegistrationActivity"/>
+        <activity android:name=".main.MainActivity"/>
     </application>
 
 </manifest>
