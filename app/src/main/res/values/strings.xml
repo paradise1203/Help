@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Help</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="email_hint">Email</string>
+    <string name="pass_hint">Password</string>
+    <string name="mobile_hint">Mobile</string>
+    <string name="register_button_hint">Register</string>
+    <string name="sign_up_button">Sign up</string>
+</resources>
