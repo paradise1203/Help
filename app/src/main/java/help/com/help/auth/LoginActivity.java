@@ -14,8 +14,8 @@ import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+import help.com.help.MapsActivity;
 import help.com.help.R;
-import help.com.help.location.LocationService;
 
 public class LoginActivity extends Activity {
 
@@ -41,7 +41,7 @@ public class LoginActivity extends Activity {
         }
 
         protected void onPostExecute(String result) {
-            LoginActivity.this.startActivity(new Intent(LoginActivity.this, LocationService.class));
+            LoginActivity.this.startActivity(new Intent(LoginActivity.this, MapsActivity.class));
         }
 
     }
