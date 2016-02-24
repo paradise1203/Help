@@ -6,5 +6,19 @@
     android:id="@+id/map"
     tools:context=".MapsActivity"
     android:name="com.google.android.gms.maps.SupportMapFragment"
-    tools:layout="@layout/abc_action_bar_title_item" />
+    tools:layout="@layout/abc_action_bar_title_item">
 
+    <!--<Button-->
+        <!--android:id="@+id/sign_in"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/sign_in_button"-->
+        <!--android:hint="@string/sign_in_hint"-->
+        <!--android:ems="10"-->
+        <!--android:gravity="top"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--style="@style/Base.Widget.AppCompat.Toolbar.Button.Navigation"-->
+        <!--android:textColor="#ff85d3ff"-->
+        <!--android:textSize="35sp"/>-->
+
+</fragment>

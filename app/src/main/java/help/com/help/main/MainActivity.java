@@ -19,11 +19,10 @@ import help.com.help.R;
 
 public class MainActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private Location getLocation() {
-        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+    private void getLocation() {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         LocationListener locationListener = new LocationListener() {
             public void onLocationChanged(Location location) {
-                // Called when a new location is found by the network location provider.
                 System.out.println((location));
             }
 
@@ -37,8 +36,8 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             }
         };
         String provider = LocationManager.GPS_PROVIDER;
-        locationManager.requestLocationUpdates(provider, 1000, 10, locationListener);
-        return locationManager.getLastKnownLocation(provider);
+        locationManager.requestLocationUpdates(provider, 0, 0, locationListener);
+        Location l = locationManager.getLastKnownLocation(provider);
     }
 
     @Override
@@ -48,6 +47,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        getLocation();
     }
 
     @Override
