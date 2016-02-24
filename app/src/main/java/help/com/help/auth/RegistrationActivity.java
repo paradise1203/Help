@@ -1,6 +1,7 @@
 package help.com.help.auth;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -19,13 +20,15 @@ public class RegistrationActivity extends Activity {
     private class SendSignUpPostRequest extends AsyncTask<String, Integer, String> {
 
         @Override
-        protected String doInBackground(String... params) {
-            Firebase ref = new Firebase("https://blistering-inferno-7485.firebaseio.com/");
+        protected String doInBackground(final String... params) {
+            final Firebase ref = new Firebase("https://blistering-inferno-7485.firebaseio.com/");
             ref.createUser(params[0], params[1], new Firebase.ValueResultHandler<Map<String, Object>>() {
                 @Override
                 public void onSuccess(Map<String, Object> result) {
-                    System.out.println("Successfully created user account with uid: " + result.get("uid"));
-
+                    String uid = result.get("uid").toString();
+                    System.out.println("Successfully created user account with uid: " + uid);
+                    Firebase mobile = ref.child(uid);
+                    mobile.child("mobile").setValue(params[2]);
                 }
 
                 @Override
@@ -37,7 +40,7 @@ public class RegistrationActivity extends Activity {
         }
 
         protected void onPostExecute(String result) {
-            System.out.println(result);
+            RegistrationActivity.this.startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
         }
 
     }

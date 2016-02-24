@@ -6,4 +6,6 @@
     <string name="mobile_hint">Mobile</string>
     <string name="register_button_hint">Register</string>
     <string name="sign_up_button">Sign up</string>
+    <string name="sign_in_hint">Sign in</string>
+    <string name="sign_in_button">Sign in</string>
 </resources>
