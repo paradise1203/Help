@@ -34,7 +34,7 @@
 
         <activity android:name=".auth.LoginActivity"/>
         <activity android:name=".action.PassActivity"/>
-
+        <activity android:name=".MapsActivity"/>
     </application>
 
 </manifest>
