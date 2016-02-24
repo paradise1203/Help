@@ -35,6 +35,7 @@
         <activity android:name=".auth.LoginActivity"/>
         <activity android:name=".action.PassActivity"/>
         <activity android:name=".MapsActivity"/>
+        <activity android:name=".location.LocationService"/>
     </application>
 
 </manifest>
