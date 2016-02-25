@@ -28,8 +28,6 @@ public class RegistrationActivity extends Activity {
                 public void onSuccess(Map<String, Object> result) {
                     String uid = result.get("uid").toString();
                     System.out.println("Successfully created user account with uid: " + uid);
-                    Switch role = (Switch) findViewById(R.id.role);
-                    UserUid.setVolunteer(role.isChecked());
                     Firebase mobile = ref.child(uid);
                     mobile.child("mobile").setValue(params[2]);
                 }

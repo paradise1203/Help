@@ -43,6 +43,7 @@ public class NeedyActivity extends Activity {
         userRef.child("longitude").setValue(l.getLongitude());
         userRef.child("volunteer").setValue(null);
         System.out.println(l);
+
     }
 
     @Override

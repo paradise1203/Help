@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
@@ -31,6 +32,8 @@ public class LoginActivity extends Activity {
                 public void onAuthenticated(AuthData authData) {
                     System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
                     UserUid.setUid(authData.getUid());
+                    Switch role = (Switch) findViewById(R.id.role);
+                    UserUid.setVolunteer(role.isChecked());
                     if (UserUid.isVolunteer()) {
                         LoginActivity.this.startActivity(new Intent(LoginActivity.this, VolunteerActivity.class));
                     } else {

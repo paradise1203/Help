@@ -40,12 +40,23 @@
         android:layout_alignLeft="@+id/email"
         android:layout_alignStart="@+id/email" />
 
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/volunteer"
+        android:id="@+id/role"
+        android:layout_below="@+id/pass"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:enabled="true"
+        android:checked="false"/>
+
     <Button
         android:id="@+id/sign_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_in_button"
-        android:layout_below="@+id/pass"
+        android:layout_below="@+id/role"
         android:layout_centerHorizontal="true"
         android:hint="@string/sign_in_hint"
         style="@style/Base.Widget.AppCompat.Toolbar.Button.Navigation"
