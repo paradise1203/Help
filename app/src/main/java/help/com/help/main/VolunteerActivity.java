@@ -23,7 +23,7 @@ import help.com.help.auth.UserUid;
 
 public class VolunteerActivity extends FragmentActivity implements OnMapReadyCallback {
 
-//    private Map<UserUid,> coordinates = new HashMap();
+    private Map<UserUid, LatLng> requests = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,10 @@ public class VolunteerActivity extends FragmentActivity implements OnMapReadyCal
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    requests.putAll((Map<? extends UserUid, ? extends LatLng>) data.getValue());
+//                    onMapReady();
+                }
             }
 
             @Override
@@ -49,14 +52,19 @@ public class VolunteerActivity extends FragmentActivity implements OnMapReadyCal
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                new LatLng(41.889, -87.622), 16));
+        //your coordinates
+        LatLng coordinates = ;
 
-        // You can customize the marker image using images bundled with
-        // your app, or dynamically generated bitmaps.
-        googleMap.addMarker(new MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
-                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
-                .position(new LatLng(41.889, -87.622)));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                coordinates, 16));
+
+        for (UserUid id : requests.keySet()) {
+            // You can customize the marker image using images bundled with
+            // your app, or dynamically generated bitmaps.
+            googleMap.addMarker(new MarkerOptions()
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
+                    .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+                    .position(requests.get(id)));
+        }
     }
 }
