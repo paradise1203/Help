@@ -62,7 +62,8 @@ public class VolunteerActivity extends FragmentActivity implements OnMapReadyCal
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    UserUid uid = (UserUid)data.getValue();
+                    UserUid uid = new UserUid();
+                    uid.setUid(data.child("uuid").toString());
                     LatLng coord = new LatLng(
                             Double.parseDouble(data.child("latitude").getValue().toString()),
                             Double.parseDouble(data.child("longitude").getValue().toString()));
