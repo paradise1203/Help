@@ -28,8 +28,6 @@ public class VolunteerActivity extends FragmentActivity implements OnMapReadyCal
 
     private Map<String, LatLng> requests = new HashMap<>();
 
-    private GoogleMap map;
-
     private Location findOutLocation() {
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         LocationListener locationListener = new LocationListener() {
@@ -69,11 +67,7 @@ public class VolunteerActivity extends FragmentActivity implements OnMapReadyCal
                     System.out.println(coord.latitude + " " + coord.longitude);
 
                     requests.put((String) data.child("uid").getValue(), coord);
-
-                    map.addMarker(new MarkerOptions()
-                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.location_icon_vector_9czEGGdRi))
-                            .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
-                            .position(coord));
+//                    onMapReady();
                 }
             }
 
@@ -95,6 +89,13 @@ public class VolunteerActivity extends FragmentActivity implements OnMapReadyCal
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                 coordinates, 16));
 
-        map = googleMap;
+        for (String id : requests.keySet()) {
+            // You can customize the marker image using images bundled with
+            // your app, or dynamically generated bitmaps.
+            googleMap.addMarker(new MarkerOptions()
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
+                    .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+                    .position(requests.get(id)));
+        }
     }
 }
