@@ -41,6 +41,7 @@ public class NeedyActivity extends Activity {
         Firebase userRef = ref.child("users").child(UserUid.getUid());
         userRef.child("latitude").setValue(l.getLatitude());
         userRef.child("longitude").setValue(l.getLongitude());
+        userRef.child("uid").setValue(UserUid.getUid());
         userRef.child("volunteer").setValue(null);
         System.out.println(l);
 

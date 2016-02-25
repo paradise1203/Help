@@ -23,11 +23,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import help.com.help.R;
-import help.com.help.auth.UserUid;
 
 public class VolunteerActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private Map<UserUid, LatLng> requests = new HashMap<>();
+    private Map<String, LatLng> requests = new HashMap<>();
+
+    private GoogleMap map;
 
     private Location findOutLocation() {
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -61,14 +62,18 @@ public class VolunteerActivity extends FragmentActivity implements OnMapReadyCal
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    UserUid uid = new UserUid();
-                    uid.setUid(data.child("uuid").toString());
+                for (DataSnapshot data : dataSnapshot.child("users").getChildren()) {
                     LatLng coord = new LatLng(
                             Double.parseDouble(data.child("latitude").getValue().toString()),
                             Double.parseDouble(data.child("longitude").getValue().toString()));
-                    requests.put(uid, coord);
-//                    onMapReady();
+                    System.out.println(coord.latitude + " " + coord.longitude);
+
+                    requests.put((String) data.child("uid").getValue(), coord);
+
+                    map.addMarker(new MarkerOptions()
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.location_icon_vector_9czEGGdRi))
+                            .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+                            .position(coord));
                 }
             }
 
@@ -90,13 +95,6 @@ public class VolunteerActivity extends FragmentActivity implements OnMapReadyCal
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                 coordinates, 16));
 
-        for (UserUid id : requests.keySet()) {
-            // You can customize the marker image using images bundled with
-            // your app, or dynamically generated bitmaps.
-            googleMap.addMarker(new MarkerOptions()
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
-                    .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
-                    .position(requests.get(id)));
-        }
+        map = googleMap;
     }
 }
