@@ -31,6 +31,11 @@ public class LoginActivity extends Activity {
                 public void onAuthenticated(AuthData authData) {
                     System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
                     UserUid.setUid(authData.getUid());
+                    if (UserUid.isVolunteer()) {
+                        LoginActivity.this.startActivity(new Intent(LoginActivity.this, VolunteerActivity.class));
+                    } else {
+                        LoginActivity.this.startActivity(new Intent(LoginActivity.this, NeedyActivity.class));
+                    }
                 }
 
                 @Override
@@ -42,11 +47,6 @@ public class LoginActivity extends Activity {
         }
 
         protected void onPostExecute(String result) {
-            if (UserUid.isVolunteer()) {
-                LoginActivity.this.startActivity(new Intent(LoginActivity.this, VolunteerActivity.class));
-            } else {
-                LoginActivity.this.startActivity(new Intent(LoginActivity.this, NeedyActivity.class));
-            }
         }
 
     }
