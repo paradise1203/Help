@@ -33,6 +33,8 @@
         </activity>
 
         <activity android:name=".auth.RegistrationActivity"/>
+        <activity android:name=".main.VolunteerActivity"/>
+        <activity android:name=".main.NeedyActivity"/>
     </application>
 
 </manifest>
