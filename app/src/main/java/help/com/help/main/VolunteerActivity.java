@@ -1,5 +1,9 @@
 package help.com.help.main;
 
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
@@ -25,6 +29,27 @@ public class VolunteerActivity extends FragmentActivity implements OnMapReadyCal
 
     private Map<UserUid, LatLng> requests = new HashMap<>();
 
+    private Location findOutLocation() {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        LocationListener locationListener = new LocationListener() {
+            public void onLocationChanged(Location location) {
+            }
+
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+            }
+
+            public void onProviderEnabled(String provider) {
+            }
+
+            public void onProviderDisabled(String provider) {
+            }
+        };
+
+        String provider = LocationManager.GPS_PROVIDER;
+        locationManager.requestLocationUpdates(provider, 0, 0, locationListener);
+        return locationManager.getLastKnownLocation(provider);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Firebase ref = new Firebase("https://blistering-inferno-7485.firebaseio.com/");
@@ -40,7 +65,7 @@ public class VolunteerActivity extends FragmentActivity implements OnMapReadyCal
                     UserUid uid = (UserUid)data.getValue();
                     LatLng coord = new LatLng(
                             Double.parseDouble(data.child("latitude").getValue().toString()),
-                            Double.parseDouble(data.child("longtitude").getValue().toString()));
+                            Double.parseDouble(data.child("longitude").getValue().toString()));
                     requests.put(uid, coord);
 //                    onMapReady();
                 }
@@ -56,8 +81,10 @@ public class VolunteerActivity extends FragmentActivity implements OnMapReadyCal
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
+        Location l = findOutLocation();
+
         //your coordinates
-        LatLng coordinates = ;
+        LatLng coordinates = new LatLng(l.getLatitude(), l.getLongitude());
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                 coordinates, 16));

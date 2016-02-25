@@ -9,4 +9,5 @@
     <string name="sign_in_hint">Sign in</string>
     <string name="sign_in_button">Sign in</string>
     <string name="volunteer">Volunteer</string>
+    <string name="help">Help!</string>
 </resources>

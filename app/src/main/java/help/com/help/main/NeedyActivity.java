@@ -6,9 +6,12 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.firebase.client.Firebase;
 
+import help.com.help.R;
 import help.com.help.auth.UserUid;
 
 public class NeedyActivity extends Activity {
@@ -45,7 +48,15 @@ public class NeedyActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        findOutLocation();
+        setContentView(R.layout.needy_page);
+        final Button help = (Button) findViewById(R.id.help);
+
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findOutLocation();
+            }
+        });
     }
 
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="30dp"
+    android:paddingStart="30dp"
+    android:paddingLeft="30dp"
+    android:paddingEnd="30dp"
+    android:paddingRight="30dp"
+    android:paddingBottom="30dp">
+
+    <Button
+        android:id="@+id/help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/help"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/sign_in_hint"
+        style="@style/Base.Widget.AppCompat.Toolbar.Button.Navigation"
+        android:textColor="#ff85d3ff"
+        android:textSize="35sp"/>
+
+</RelativeLayout>
