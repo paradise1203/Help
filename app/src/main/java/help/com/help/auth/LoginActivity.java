@@ -15,7 +15,8 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 import help.com.help.R;
-import help.com.help.main.MainActivity;
+import help.com.help.main.NeedyActivity;
+import help.com.help.main.VolunteerActivity;
 
 public class LoginActivity extends Activity {
 
@@ -41,7 +42,11 @@ public class LoginActivity extends Activity {
         }
 
         protected void onPostExecute(String result) {
-            LoginActivity.this.startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            if (UserUid.isVolunteer()) {
+                LoginActivity.this.startActivity(new Intent(LoginActivity.this, VolunteerActivity.class));
+            } else {
+                LoginActivity.this.startActivity(new Intent(LoginActivity.this, NeedyActivity.class));
+            }
         }
 
     }

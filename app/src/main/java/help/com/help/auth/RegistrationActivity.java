@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -27,6 +28,8 @@ public class RegistrationActivity extends Activity {
                 public void onSuccess(Map<String, Object> result) {
                     String uid = result.get("uid").toString();
                     System.out.println("Successfully created user account with uid: " + uid);
+                    Switch role = (Switch) findViewById(R.id.role);
+                    UserUid.setVolunteer(role.isChecked());
                     Firebase mobile = ref.child(uid);
                     mobile.child("mobile").setValue(params[2]);
                 }
