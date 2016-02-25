@@ -7,13 +7,18 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 
+import com.firebase.client.Firebase;
+
+import help.com.help.auth.UserUid;
+
 public class NeedyActivity extends Activity {
 
     private void findOutLocation() {
+        final Firebase ref = new Firebase("https://blistering-inferno-7485.firebaseio.com/");
+
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         LocationListener locationListener = new LocationListener() {
             public void onLocationChanged(Location location) {
-                System.out.println((location));
             }
 
             public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -25,9 +30,15 @@ public class NeedyActivity extends Activity {
             public void onProviderDisabled(String provider) {
             }
         };
+
         String provider = LocationManager.GPS_PROVIDER;
         locationManager.requestLocationUpdates(provider, 0, 0, locationListener);
         Location l = locationManager.getLastKnownLocation(provider);
+
+        Firebase userRef = ref.child("users").child(UserUid.getUid());
+        userRef.child("latitude").setValue(l.getLatitude());
+        userRef.child("longitude").setValue(l.getLongitude());
+        userRef.child("volunteer").setValue(null);
         System.out.println(l);
     }
 
